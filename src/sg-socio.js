@@ -142,7 +142,11 @@
 
     module.factory('SGSocio', ['SocioRestangular',  function(SocioRestangular) {
 
-        var extendMethod = {};
+        var extendMethod = {
+            $getCuentaAporte: function () {
+                return SocioRestangular.one(this.$getBasePath(), this.id).all('cuentaAporte').get();
+            }
+        };
 
         var socioResource = RestObject('socios', SocioRestangular, extendMethod);
 
