@@ -128,12 +128,12 @@
         }
 
         restangular.extendModel(path, function (obj) {
-            automaticExtend(obj);
+            automaticExtend(obj, modelMethods);
             return obj;
         });
 
         restangular.extendCollection(path, function (collection) {
-            automaticExtend(collection);
+            automaticExtend(collection, modelMethods);
             return collection;
         });
 
@@ -144,7 +144,7 @@
 
         var extendMethod = {
             $getCuentaAporte: function () {
-                return SocioRestangular.one(this.$getBasePath(), this.id).all('cuentaAporte').get();
+                return SocioRestangular.one(this.$getBasePath(), this.id).customGET('cuentaAporte', {});
             }
         };
 
